@@ -1,6 +1,7 @@
-package com.teng.chat;
+package com.teng.chat13;
 
 import java.io.BufferedReader;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -12,11 +13,12 @@ import java.util.HashMap;
 import org.apache.log4j.Logger;
 
 /**
- * @author sunboteng 
+ * @version 1.3
+ * @author sunboteng
  */
-public class Server {
+public class Server13 {
 
-	private static Logger logger = Logger.getLogger(Server_Socket.class);
+	private static Logger logger = Logger.getLogger(Server13.class);
 
 	public static void main(String[] args) throws Exception {
 		ServerSocket serverSocket = new ServerSocket(100);
@@ -110,6 +112,13 @@ class ServerThread extends Thread {
 						serverThreaddk.sendMessage("¶Ï¿ª" + fields[1]);
 					}
 
+				} else if (fields[0].equals("All")) {
+
+					for (ServerThread group : serverThreads.values()) {
+						group.sendMessage(serverThreads.keySet() + ":"
+								+ fields[1]);
+
+					}
 				} else {
 					serverThread = serverThreads.get(fields[0]);
 					serverThread.sendMessage(name + ":" + fields[1]);

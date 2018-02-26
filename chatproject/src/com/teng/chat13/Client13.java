@@ -1,4 +1,4 @@
-package com.teng.chat;
+package com.teng.chat13;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,10 +9,11 @@ import javax.swing.DefaultListModel;
 import javax.swing.JTextArea;
 
 /**
+ * @version 1.3
  * @author sunboteng
  */
 
-public class Client implements Runnable {
+public class Client13 implements Runnable {
 
 	private Socket socket = null;
 
@@ -24,8 +25,7 @@ public class Client implements Runnable {
 
 	private DefaultListModel defaultListModel = null;
 
-	public ClientThread_Socket(JTextArea jTextArea,
-			DefaultListModel defaultListModel) {
+	public Client13(JTextArea jTextArea, DefaultListModel defaultListModel) {
 
 		this.jTextArea = jTextArea;
 		this.defaultListModel = defaultListModel;

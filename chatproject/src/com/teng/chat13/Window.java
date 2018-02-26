@@ -1,16 +1,18 @@
-package com.teng.chat;
+package com.teng.chat13;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;	
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -115,8 +117,7 @@ public class Window {
 
 		jframe.add(south, BorderLayout.SOUTH);
 
-		final ClientThread_Socket clientSocket = new ClientThread_Socket(
-				jTextArea, defaultListModel);
+		final Client13 clientSocket = new Client13(jTextArea, defaultListModel);
 
 		connectButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -169,13 +170,29 @@ public class Window {
 
 		sendButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String message = sendTextField.getText().trim();
-				String targetUserName = jList.getSelectedValue();
-				try {
 
-					clientSocket.sendMessage(targetUserName + ":" + message);
-				} catch (Exception e1) {
-					e1.printStackTrace();
+				String message = sendTextField.getText().trim();
+
+				ArrayList<String> list = (ArrayList<String>) jList
+						.getSelectedValuesList();
+				if (list.size() == defaultListModel.size() || list.size() == 0) {
+					try {
+						clientSocket.sendMessage("All:" + message);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} else {
+					for (int i = 0; i < list.size(); i++) {
+						try {
+							clientSocket.sendMessage(list.get(i) + ":"
+									+ message + "\n");
+							jTextArea.append("Äã¶Ô" + list.get(i) + message);
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
+
+					}
 				}
 			}
 		});
