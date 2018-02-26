@@ -14,7 +14,7 @@ import org.apache.log4j.Logger;
 /**
  * @author sunboteng 
  */
-public class Server_Socket {
+public class Server {
 
 	private static Logger logger = Logger.getLogger(Server_Socket.class);
 

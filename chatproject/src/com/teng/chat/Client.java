@@ -12,7 +12,7 @@ import javax.swing.JTextArea;
  * @author sunboteng
  */
 
-public class ClientThread_Socket implements Runnable {
+public class Client implements Runnable {
 
 	private Socket socket = null;
 

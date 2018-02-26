@@ -21,7 +21,7 @@ import javax.swing.border.TitledBorder;
 /**
  * @author sunboteng
  */
-public class Window_Main {
+public class Window {
 
 	public static void main(String[] args) {
 
